@@ -1,0 +1,343 @@
+pipelines:
+  - name: pipeline_u18langTests
+    steps:
+      - name: sample_u18
+        type: Bash
+        execution:
+          onExecute:
+            - echo "Hello testing all u18"
+            
+      - name: u18cpp8_0_0
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: sample_u18
+          runtime:
+            type: image
+            image:
+              auto:
+                language: cpp
+                versions:
+                  - "8.0.0"
+        execution:
+          onExecute:
+            - clang --version
+            - gcc --version
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - helm version --client
+            - ansible --version
+            - packer --version
+            - terraform --version
+            #- |
+            #  [[ "$(clang --version)" == *"$step_iamge_tag"* ]]
+              
+      - name: u18cpp9_0_0
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: cpp
+                versions:
+                  - "9.0.0"
+          inputSteps:
+            - name: sample_u18
+        execution:
+          onExecute:
+            - clang --version
+            - gcc --version
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - helm version --client
+            - ansible --version
+            - packer --version
+            - terraform --version
+            
+           # - |
+           #   [[ "$(clang --version)" == *"9.0.0"* ]]
+              
+      - name: u18go1_12_14
+        type: Bash
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+                versions: 
+                  - 1.12.14
+          inputSteps:
+            - name: sample_u18
+        execution:
+          onExecute:   
+            - source /root/.gvm/scripts/gvm
+            - gvm list
+            - gvm use 1.12
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - terraform --version
+            - helm version --client
+            - ansible --version
+            - packer --version
+           # - |
+           #   [[ "$(go version)" == *"$step_image_tag"* ]]
+              
+              
+      - name: u18go1_11_13
+        type: Bash
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+                versions: 
+                  - 1.11.13
+          inputSteps:
+            - name: sample_u18
+        execution:
+          onExecute:   
+            - source /root/.gvm/scripts/gvm
+            - gvm list
+            - gvm use 1.11
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - terraform --version
+            - helm version --client
+            - ansible --version
+            - packer --version
+           # - |
+           #   [[ "$(go version)" == *"$step_image_tag"* ]]
+              
+      - name: u18java11
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - "11"
+          inputSteps:
+            - name: sample_u18
+        execution:
+          onExecute:
+            - java --version
+            - ant -version
+            - mvn --version
+            - gradle --version
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - helm version --client
+            - ansible --version
+            - packer --version
+            - terraform --version
+           # - |
+            #  [[ "$(java --version)" == *"$step_iamge_tag"* ]]
+              
+      - name: u18java13
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - "13"
+          inputSteps:
+            - name: sample_u18
+        execution:
+          onExecute:
+            - java --version
+            - ant -version
+            - mvn --version
+            - gradle --version
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - helm version --client
+            - ansible --version
+            - packer --version
+            - terraform --version
+           # - |
+            #  [[ "$(java --version)" == *"13.0.1"* ]]   
+              
+      - name: u18java8
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - "8"
+          inputSteps:
+            - name: sample_u18
+        execution:
+          onExecute:
+            - java -version
+            - ant -version
+            - mvn --version
+            - gradle --version
+            - var=$(java -version 2>&1 >/dev/null |  awk '{print $3}' | head -1)
+            - java -version
+            - ant -version
+            - gradle --version
+            - mvn --version
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - terraform --version
+            - helm version --client
+            - ansible --version
+            - packer --version
+           # - |
+           #   [[ $var == *"1.8.0_222"* ]]
+              
+      - name: u18node10_18_0
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - "10.18.0"
+          inputSteps:
+            - name: sample_u18
+        execution:
+          onExecute:
+            - node --version
+            - npm --version
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - terraform --version
+            - helm version --client
+            - ansible --version
+            - packer --version
+           # - |
+           #   [[ "$(node --version)" == *"10.16.3"* ]] 
+      
+      - name: u18node12_14_0
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - "12.14.0"
+          inputSteps:
+            - name: sample_u18
+        execution:
+          onExecute:
+            - node --version
+            - npm --version
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - terraform --version
+            - helm version --client
+            - ansible --version
+            - packer --version
+           # - |
+           #   [[ "$(node --version)" == *"12.14.0"* ]]
+           
+      - name: u18node8_17_0
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: node
+                versions:
+                  - "8.17.0"
+          inputSteps:
+            - name: sample_u18
+        execution:
+          onExecute:
+            - node --version
+            - npm --version
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - terraform --version
+            - helm version --client
+            - ansible --version
+            - packer --version
+           # - |
+           #   [[ "$(node -v)" == *"8.16.0"* ]]
