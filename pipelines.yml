@@ -206,41 +206,7 @@ pipelines:
             - packer --version
             - terraform --version
            # - |
-            #  [[ "$(java --version)" == *"$step_iamge_tag"* ]]
-              
-      - name: c7java13
-        type: Bash
-        configuration:
-          runtime:
-            type: image
-            image:
-              auto:
-                language: java
-                versions:
-                  - "13"
-          inputSteps:
-            - name: sample_c7
-        execution:
-          onExecute:
-            - java --version
-            - ant -version
-            - mvn --version
-            - gradle --version
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#            - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - helm version --client
-            - ansible --version
-            - packer --version
-            - terraform --version
-           # - |
-            #  [[ "$(java --version)" == *"13.0.1"* ]]   
+            #  [[ "$(java --version)" == *"$step_iamge_tag"* ]] 
               
       - name: c7java8
         type: Bash
