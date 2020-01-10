@@ -73,7 +73,40 @@ pipelines:
             
            # - |
            #   [[ "$(clang --version)" == *"9.0.0"* ]]
-              
+
+      - name: c7go1_13_5
+        type: Bash
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+                versions: 
+                  - 1.13.5
+          inputSteps:
+            - name: sample_c7
+        execution:
+          onExecute:   
+            - source /root/.gvm/scripts/gvm
+            - gvm list
+            - gvm use 1.13
+            - aws --version
+            - git --version
+            - pip --version
+            - virtualenv --version
+#            - eb --version
+            - az --version
+            - jfrog --version
+            - gcloud version
+            - kubectl version --client
+            - terraform --version
+            - helm version --client
+            - ansible --version
+            - packer --version
+           # - |
+           #   [[ "$(go version)" == *"$step_image_tag"* ]]
+
       - name: c7go1_12_14
         type: Bash
         configuration:
