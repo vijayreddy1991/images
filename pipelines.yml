@@ -1,37 +1,38 @@
 pipelines:
-  - name: pipeline_u18langTests
+  - name: pipeline_c7langTests
     steps:
-      - name: sample_u18
+      - name: sample_c7
         type: Bash
         execution:
           onExecute:
-            - echo "Hello testing all u18"
+            - echo "Hello testing all c7"
             
-      - name: u18cpp8_0_0
+      - name: c7cpp8_3_1
         type: Bash
         configuration:
           inputSteps:
-            - name: sample_u18
+            - name: sample_c7
           runtime:
             type: image
             image:
               auto:
                 language: cpp
                 versions:
-                  - "8.0.0"
+                  - "8.3.1"
         execution:
           onExecute:
             - clang --version
-            - gcc --version
+            - gcc --version     
             - aws --version
             - git --version
             - pip --version
             - virtualenv --version
-            - eb --version
+#             - eb --version
             - az --version
             - jfrog --version
             - gcloud version
             - kubectl version --client
+            - terraform --version
             - helm version --client
             - ansible --version
             - packer --version
@@ -39,40 +40,41 @@ pipelines:
             #- |
             #  [[ "$(clang --version)" == *"$step_iamge_tag"* ]]
               
-      - name: u18cpp9_0_0
+      - name: c7cpp7_0_1
         type: Bash
         configuration:
+          inputSteps:
+            - name: sample_c7        
           runtime:
             type: image
             image:
               auto:
                 language: cpp
                 versions:
-                  - "9.0.0"
-          inputSteps:
-            - name: sample_u18
+                  - 7.0.1
         execution:
           onExecute:
             - clang --version
-            - gcc --version
+            - gcc --version     
             - aws --version
             - git --version
             - pip --version
             - virtualenv --version
-            - eb --version
+#             - eb --version
             - az --version
             - jfrog --version
             - gcloud version
             - kubectl version --client
+            - terraform --version
             - helm version --client
             - ansible --version
-            - packer --version
+            - packer --version 
             - terraform --version
             
            # - |
            #   [[ "$(clang --version)" == *"9.0.0"* ]]
               
-      - name: u18go1_12_14
+      - name: c7go1_12_14
         type: Bash
         configuration:
           runtime:            
@@ -83,7 +85,7 @@ pipelines:
                 versions: 
                   - 1.12.14
           inputSteps:
-            - name: sample_u18
+            - name: sample_c7
         execution:
           onExecute:   
             - source /root/.gvm/scripts/gvm
@@ -93,7 +95,7 @@ pipelines:
             - git --version
             - pip --version
             - virtualenv --version
-            - eb --version
+#            - eb --version
             - az --version
             - jfrog --version
             - gcloud version
@@ -106,7 +108,7 @@ pipelines:
            #   [[ "$(go version)" == *"$step_image_tag"* ]]
               
               
-      - name: u18go1_11_13
+      - name: c7go1_11_13
         type: Bash
         configuration:
           runtime:            
@@ -117,7 +119,7 @@ pipelines:
                 versions: 
                   - 1.11.13
           inputSteps:
-            - name: sample_u18
+            - name: sample_c7
         execution:
           onExecute:   
             - source /root/.gvm/scripts/gvm
@@ -127,7 +129,7 @@ pipelines:
             - git --version
             - pip --version
             - virtualenv --version
-            - eb --version
+#            - eb --version
             - az --version
             - jfrog --version
             - gcloud version
@@ -139,7 +141,7 @@ pipelines:
            # - |
            #   [[ "$(go version)" == *"$step_image_tag"* ]]
               
-      - name: u18java11
+      - name: c7java11
         type: Bash
         configuration:
           runtime:
@@ -150,7 +152,7 @@ pipelines:
                 versions:
                   - "11"
           inputSteps:
-            - name: sample_u18
+            - name: sample_c7
         execution:
           onExecute:
             - java --version
@@ -161,7 +163,7 @@ pipelines:
             - git --version
             - pip --version
             - virtualenv --version
-            - eb --version
+#            - eb --version
             - az --version
             - jfrog --version
             - gcloud version
@@ -173,7 +175,7 @@ pipelines:
            # - |
             #  [[ "$(java --version)" == *"$step_iamge_tag"* ]]
               
-      - name: u18java13
+      - name: c7java13
         type: Bash
         configuration:
           runtime:
@@ -184,7 +186,7 @@ pipelines:
                 versions:
                   - "13"
           inputSteps:
-            - name: sample_u18
+            - name: sample_c7
         execution:
           onExecute:
             - java --version
@@ -195,7 +197,7 @@ pipelines:
             - git --version
             - pip --version
             - virtualenv --version
-            - eb --version
+#            - eb --version
             - az --version
             - jfrog --version
             - gcloud version
@@ -207,7 +209,7 @@ pipelines:
            # - |
             #  [[ "$(java --version)" == *"13.0.1"* ]]   
               
-      - name: u18java8
+      - name: c7java8
         type: Bash
         configuration:
           runtime:
@@ -218,7 +220,7 @@ pipelines:
                 versions:
                   - "8"
           inputSteps:
-            - name: sample_u18
+            - name: sample_c7
         execution:
           onExecute:
             - java -version
@@ -234,7 +236,7 @@ pipelines:
             - git --version
             - pip --version
             - virtualenv --version
-            - eb --version
+#             - eb --version
             - az --version
             - jfrog --version
             - gcloud version
@@ -246,7 +248,7 @@ pipelines:
            # - |
            #   [[ $var == *"1.8.0_222"* ]]
               
-      - name: u18node10_18_0
+      - name: c7node10_18_0
         type: Bash
         configuration:
           runtime:
@@ -257,7 +259,7 @@ pipelines:
                 versions:
                   - "10.18.0"
           inputSteps:
-            - name: sample_u18
+            - name: sample_c7
         execution:
           onExecute:
             - node --version
@@ -266,7 +268,7 @@ pipelines:
             - git --version
             - pip --version
             - virtualenv --version
-            - eb --version
+#             - eb --version
             - az --version
             - jfrog --version
             - gcloud version
@@ -278,7 +280,7 @@ pipelines:
            # - |
            #   [[ "$(node --version)" == *"10.16.3"* ]] 
       
-      - name: u18node12_14_0
+      - name: c7node12_14_0
         type: Bash
         configuration:
           runtime:
@@ -289,7 +291,7 @@ pipelines:
                 versions:
                   - "12.14.0"
           inputSteps:
-            - name: sample_u18
+            - name: sample_c7
         execution:
           onExecute:
             - node --version
@@ -298,7 +300,7 @@ pipelines:
             - git --version
             - pip --version
             - virtualenv --version
-            - eb --version
+#             - eb --version
             - az --version
             - jfrog --version
             - gcloud version
@@ -310,7 +312,7 @@ pipelines:
            # - |
            #   [[ "$(node --version)" == *"12.14.0"* ]]
            
-      - name: u18node8_17_0
+      - name: c7node8_17_0
         type: Bash
         configuration:
           runtime:
@@ -321,7 +323,7 @@ pipelines:
                 versions:
                   - "8.17.0"
           inputSteps:
-            - name: sample_u18
+            - name: sample_c7
         execution:
           onExecute:
             - node --version
@@ -330,7 +332,7 @@ pipelines:
             - git --version
             - pip --version
             - virtualenv --version
-            - eb --version
+#             - eb --version
             - az --version
             - jfrog --version
             - gcloud version
