@@ -18,8 +18,8 @@ pipelines:
               auto:
                 language: cpp
                 versions:
-                  #- "8.3.1"
-                  - "9.0.0"
+                  - "8.3.1"
+
         execution:
           onExecute:
             - clang --version
