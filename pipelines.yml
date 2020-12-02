@@ -275,7 +275,7 @@ pipelines:
            # - |
            #   [[ "$(go version)" == *"$step_image_tag"* ]]
  
-       - name: u20java15
+      - name: u20java15
         type: Bash
         configuration:
           runtime:
