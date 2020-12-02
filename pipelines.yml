@@ -1,81 +1,115 @@
 pipelines:
-  - name: pipeline_c7langTests
+  - name: pipeline_u20langTests
     steps:
-      - name: sample_c7
+      - name: sample_u20
         type: Bash
         execution:
           onExecute:
-            - echo "Hello testing all c7"
+            - echo "Hello testing all u20"
             
-      - name: c7cpp8_3_1
+      - name: u20cpp8_0_1
         type: Bash
         configuration:
           inputSteps:
-            - name: sample_c7
+            - name: sample_u20
           runtime:
             type: image
             image:
               auto:
                 language: cpp
                 versions:
-                  - "8.3.1"
+                  - "8.0.1"
 
         execution:
           onExecute:
             - clang --version
             - gcc --version     
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#             - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - terraform --version
-            - helm version --client
-            - ansible --version
-            - packer --version
-            - terraform --version
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #             - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
+#             - terraform --version
             #- |
             #  [[ "$(clang --version)" == *"$step_iamge_tag"* ]]
               
-      - name: c7cpp7_0_1
+      - name: u20cpp9_0_1
         type: Bash
         configuration:
           inputSteps:
-            - name: sample_c7        
+            - name: sample_u20        
           runtime:
             type: image
             image:
               auto:
                 language: cpp
                 versions:
-                  - 7.0.1
+                  - 9.0.1
         execution:
           onExecute:
             - clang --version
             - gcc --version     
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#             - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - terraform --version
-            - helm version --client
-            - ansible --version
-            - packer --version 
-            - terraform --version
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #             - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version 
+#             - terraform --version
+            
+           # - |
+           #   [[ "$(clang --version)" == *"9.0.0"* ]]
+           
+      - name: u20cpp10_0_0
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: sample_u20        
+          runtime:
+            type: image
+            image:
+              auto:
+                language: cpp
+                versions:
+                  - 10.0.0
+        execution:
+          onExecute:
+            - clang --version
+            - gcc --version     
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #             - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version 
+#             - terraform --version
             
            # - |
            #   [[ "$(clang --version)" == *"9.0.0"* ]]
 
-      - name: c7go1_13_5
+      - name: u20go1_15_2
         type: Bash
         configuration:
           runtime:            
@@ -84,31 +118,97 @@ pipelines:
               auto:
                 language: go
                 versions: 
-                  - 1.13.5
+                  - 1.15.2
           inputSteps:
-            - name: sample_c7
+            - name: sample_u20
+        execution:
+          onExecute:   
+            - source /root/.gvm/scripts/gvm
+            - gvm list
+            - gvm use 1.15
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #            - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
+           # - |
+           #   [[ "$(go version)" == *"$step_image_tag"* ]]
+
+      - name: u20go1_14_4
+        type: Bash
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+                versions: 
+                  - 1.14.4
+          inputSteps:
+            - name: sample_u20
+        execution:
+          onExecute:   
+            - source /root/.gvm/scripts/gvm
+            - gvm list
+            - gvm use 1.14
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #            - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
+           # - |
+           #   [[ "$(go version)" == *"$step_image_tag"* ]]
+
+      - name: u20go1_13_12
+        type: Bash
+        configuration:
+          runtime:            
+            type: image
+            image:
+              auto:
+                language: go
+                versions: 
+                  - 1.13.12
+          inputSteps:
+            - name: sample_u20
         execution:
           onExecute:   
             - source /root/.gvm/scripts/gvm
             - gvm list
             - gvm use 1.13
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#            - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - terraform --version
-            - helm version --client
-            - ansible --version
-            - packer --version
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #            - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
            # - |
            #   [[ "$(go version)" == *"$step_image_tag"* ]]
 
-      - name: c7go1_12_14
+      - name: u20go1_12_17
         type: Bash
         configuration:
           runtime:            
@@ -117,32 +217,32 @@ pipelines:
               auto:
                 language: go
                 versions: 
-                  - 1.12.14
+                  - 1.12.17
           inputSteps:
-            - name: sample_c7
+            - name: sample_u20
         execution:
           onExecute:   
             - source /root/.gvm/scripts/gvm
             - gvm list
             - gvm use 1.12
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#            - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - terraform --version
-            - helm version --client
-            - ansible --version
-            - packer --version
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #            - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
            # - |
            #   [[ "$(go version)" == *"$step_image_tag"* ]]
               
               
-      - name: c7go1_11_13
+      - name: u20go1_11_13
         type: Bash
         configuration:
           runtime:            
@@ -153,29 +253,63 @@ pipelines:
                 versions: 
                   - 1.11.13
           inputSteps:
-            - name: sample_c7
+            - name: sample_u20
         execution:
           onExecute:   
             - source /root/.gvm/scripts/gvm
             - gvm list
             - gvm use 1.11
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#            - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - terraform --version
-            - helm version --client
-            - ansible --version
-            - packer --version
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #            - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
            # - |
            #   [[ "$(go version)" == *"$step_image_tag"* ]]
-              
-      - name: c7java11
+ 
+       - name: u20java15
+        type: Bash
+        configuration:
+          runtime:
+            type: image
+            image:
+              auto:
+                language: java
+                versions:
+                  - "15"
+          inputSteps:
+            - name: sample_u20
+        execution:
+          onExecute:
+            - java --version
+            - ant -version
+            - mvn --version
+            - gradle --version
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #            - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
+#             - terraform --version
+           # - |
+            #  [[ "$(java --version)" == *"$step_iamge_tag"* ]] 
+ 
+      - name: u20java11
         type: Bash
         configuration:
           runtime:
@@ -186,30 +320,30 @@ pipelines:
                 versions:
                   - "11"
           inputSteps:
-            - name: sample_c7
+            - name: sample_u20
         execution:
           onExecute:
             - java --version
             - ant -version
             - mvn --version
-            - gradle --version
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#            - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - helm version --client
-            - ansible --version
-            - packer --version
-            - terraform --version
+#             - gradle --version
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #            - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
+#             - terraform --version
            # - |
             #  [[ "$(java --version)" == *"$step_iamge_tag"* ]] 
               
-      - name: c7java8
+      - name: u20java8
         type: Bash
         configuration:
           runtime:
@@ -220,35 +354,35 @@ pipelines:
                 versions:
                   - "8"
           inputSteps:
-            - name: sample_c7
+            - name: sample_u20
         execution:
           onExecute:
             - java -version
             - ant -version
             - mvn --version
             - gradle --version
-            - var=$(java -version 2>&1 >/dev/null |  awk '{print $3}' | head -1)
-            - java -version
-            - ant -version
-            - gradle --version
-            - mvn --version
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#             - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - terraform --version
-            - helm version --client
-            - ansible --version
-            - packer --version
+#             - var=$(java -version 2>&1 >/dev/null |  awk '{print $3}' | head -1)
+#             - java -version
+#             - ant -version
+#             - gradle --version
+#             - mvn --version
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #             - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
            # - |
            #   [[ $var == *"1.8.0_222"* ]]
               
-      - name: c7node10_18_0
+      - name: u20node10_21_0
         type: Bash
         configuration:
           runtime:
@@ -257,30 +391,30 @@ pipelines:
               auto:
                 language: node
                 versions:
-                  - "10.18.0"
+                  - "10.21.0"
           inputSteps:
-            - name: sample_c7
+            - name: sample_u20
         execution:
           onExecute:
             - node --version
             - npm --version
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#             - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - terraform --version
-            - helm version --client
-            - ansible --version
-            - packer --version
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #             - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
            # - |
            #   [[ "$(node --version)" == *"10.16.3"* ]] 
       
-      - name: c7node12_14_0
+      - name: u20node12_18_2
         type: Bash
         configuration:
           runtime:
@@ -289,30 +423,30 @@ pipelines:
               auto:
                 language: node
                 versions:
-                  - "12.14.0"
+                  - "12.18.2"
           inputSteps:
-            - name: sample_c7
+            - name: sample_u20
         execution:
           onExecute:
             - node --version
             - npm --version
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#             - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - terraform --version
-            - helm version --client
-            - ansible --version
-            - packer --version
-           # - |
-           #   [[ "$(node --version)" == *"12.14.0"* ]]
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #             - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
+#            # - |
+#            #   [[ "$(node --version)" == *"12.14.0"* ]]
            
-      - name: c7node8_17_0
+      - name: u20node8_17_0
         type: Bash
         configuration:
           runtime:
@@ -323,23 +457,23 @@ pipelines:
                 versions:
                   - "8.17.0"
           inputSteps:
-            - name: sample_c7
+            - name: sample_u20
         execution:
           onExecute:
             - node --version
             - npm --version
-            - aws --version
-            - git --version
-            - pip --version
-            - virtualenv --version
-#             - eb --version
-            - az --version
-            - jfrog --version
-            - gcloud version
-            - kubectl version --client
-            - terraform --version
-            - helm version --client
-            - ansible --version
-            - packer --version
-           # - |
-           #   [[ "$(node -v)" == *"8.16.0"* ]]
+#             - aws --version
+#             - git --version
+#             - pip --version
+#             - virtualenv --version
+# #             - eb --version
+#             - az --version
+#             - jfrog --version
+#             - gcloud version
+#             - kubectl version --client
+#             - terraform --version
+#             - helm version --client
+#             - ansible --version
+#             - packer --version
+#            # - |
+#            #   [[ "$(node -v)" == *"8.16.0"* ]]
